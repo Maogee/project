@@ -1,0 +1,181 @@
+<template>
+  <div class="appheader">
+    <img class="me" @click="routerLink('1','/Introduce')" src="../assets/1.jpg" />
+    <ul class="ul-item">
+      <li v-for="(item,index) in nav" @click="routerLink(index,item.path)" :key="index">
+        <button :class="navIndex===item.en?'item-title-active':'item-title'">
+          <b>{{item.title}}</b>
+        </button>
+      </li>
+    </ul>
+    <div class="linkaddress">
+      <ul class="list-ui">
+        <li class="weixin-list">
+          <i class="iconfont icon-weixin" />
+          <div class="weixin">
+            <img src="../assets/2.png" />
+          </div>
+        </li>
+        <li class="qq-list">
+          <i class="iconfont icon-qq" />
+          <div class="qq">
+            <img class="qq" src="../assets/2.png" />
+          </div>
+        </li>
+        <li>
+          <a href="https://github.com/Maogee" target="_blank">
+            <i class="iconfont icon-github" />
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "appheader",
+  data() {
+    return {
+      navIndex: "Home",
+      nav: [
+        { title: "首页", en: "Home", path: "/Home" },
+        { title: "个人简介", en: "Introduce", path: "/Introduce" },
+        { title: "个人博客", en: "Blog", path: "/Blog" }
+      ]
+    };
+  },
+  methods: {
+    routerLink(index, path) {
+      this.navIndex = this.nav[index].title;
+      this.$router.push(path);
+    }
+  },
+  mounted() {
+    this.navIndex = this.$route.name;
+  },
+  updated() {
+    this.navIndex = this.$route.name;
+  }
+};
+</script>
+
+<style scoped>
+.appheader {
+  background-color: #f3f3f3;
+  text-align: center;
+}
+.me {
+  display: none;
+  height: 14rem;
+  width: 14rem;
+  margin-top: 5rem;
+  border-radius: 50%;
+}
+ul {
+  margin: 0;
+  padding: 0;
+}
+li {
+  list-style: none;
+  margin-top: 2rem;
+}
+.item-title {
+  color: #1c2438;
+  font-size: 20px;
+  background: none;
+  border: 0;
+  outline: none;
+}
+.item-title-active {
+  color: #2d8cf0;
+  font-size: 20px;
+  border: 0;
+  background: none;
+  outline: none;
+}
+.ul-item {
+  overflow: auto;
+  margin: 0;
+  padding: 0;
+}
+.linkaddress {
+  margin-top: 1rem;
+  height: 10rem;
+}
+a {
+  text-decoration: none;
+  color: #333;
+}
+.iconfont {
+  font-size: 30px;
+}
+.list-ui {
+  height: 100%;
+  margin-left: 2.5rem;
+}
+.list-ui li {
+  float: left;
+  margin-left: 2rem;
+}
+.weixin {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  left: 1rem;
+  opacity: 0;
+  transition: all 1s ease-in-out 0s;
+  -moz-transition: all 1s ease-in-out 0s;
+  -webkit-transition: all 1s ease-in-out 0s;
+}
+.weixin-list:hover .weixin {
+  opacity: 1;
+  transform: rotateX(360deg);
+  -moz-transform: rotateX(360deg);
+  -ms-transform: rotateX(360deg);
+  -o-transform: rotateX(360deg);
+  -webkit-transform: rotateX(360deg);
+}
+.weixin img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.weixin:after {
+  content: "";
+  position: absolute;
+  display: block;
+  right: 68px;
+  top: -11px;
+}
+.qq {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  left: 2.5rem;
+  opacity: 0;
+  transition: all 1s ease-in-out 0s;
+  -moz-transition: all 1s ease-in-out 0s;
+  -webkit-transition: all 1s ease-in-out 0s;
+}
+.qq-list:hover .qq {
+  opacity: 1;
+  transform: rotateX(360deg);
+  -moz-transform: rotateX(360deg);
+  -ms-transform: rotateX(360deg);
+  -o-transform: rotateX(360deg);
+  -webkit-transform: rotateX(360deg);
+}
+.qq img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.qq:after {
+  content: "";
+  position: absolute;
+  display: block;
+  right: 68px;
+  top: -11px;
+}
+</style>
