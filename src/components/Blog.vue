@@ -117,21 +117,22 @@ export default {
 </script>
 
 <style>
-#id {
-  height: 100%;
+#blog {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-content: center;
 }
 .left-content {
-  float: left;
-  height: 100%;
   width: 68%;
   background-color: #f3f3f3;
-  margin-left: 1rem;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items:center;
 }
 .search {
-  position: absolute;
-  left: 38%;
   margin-top: 2rem;
-  margin-bottom: 1rem;
   width: 20rem;
   height: 2rem;
   border: 1px solid #ccc;
@@ -159,14 +160,17 @@ export default {
   background-color: white;
 }
 .preview {
-  margin-top: 5rem;
-  margin-left: 1.3rem;
-  width: 95%;
+  margin-top: 1rem;
+  width:100%;
+  margin-left: 1rem;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-content: center;
 }
 .each-preview {
   background-color: white;
   margin-top: 1rem;
-  margin-left: 0.5rem;
   width: 98%;
   height: 8rem;
   border: 1px white solid;
@@ -184,27 +188,19 @@ export default {
   text-decoration: none;
 }
 .page-bar {
-  float: auto;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-content: center;
   width: 100%;
   height: 1rem;
-  margin-left: 42%;
   padding: 0;
   margin-top: 1rem;
 }
 .switch-bar {
-  float: left;
   list-style: none;
 }
-.right-content {
-  float: left;
-  height: 100%;
-  width: 28%;
-  background-color: #f3f3f3;
-  margin-left: 1rem;
-}
-.right-content h1 {
-  margin-top: 2rem;
-}
+
 .switch-page-btn {
   border: 1px white solid;
   border-radius: 20%;
@@ -224,5 +220,18 @@ export default {
   outline: none;
   cursor: pointer;
   background-color: #2d8cf0;
+}
+.right-content {
+  height: 100%;
+  width: 28%;
+  background-color: #f3f3f3;
+  margin-left: 1rem;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-content: center;
+}
+.right-content h1 {
+  margin-top: 2rem;
 }
 </style>

@@ -8,27 +8,25 @@
         </button>
       </li>
     </ul>
-    <div class="linkaddress">
-      <ul class="list-ui">
-        <li class="weixin-list">
-          <i class="iconfont icon-weixin" />
-          <div class="weixin">
-            <img src="../assets/2.png" />
-          </div>
-        </li>
-        <li class="qq-list">
-          <i class="iconfont icon-qq" />
-          <div class="qq">
-            <img class="qq" src="../assets/2.png" />
-          </div>
-        </li>
-        <li>
-          <a href="https://github.com/Maogee" target="_blank">
-            <i class="iconfont icon-github" />
-          </a>
-        </li>
-      </ul>
-    </div>
+    <ul class="list-ui">
+      <li class="weixin-list">
+        <i class="iconfont icon-weixin" />
+        <div class="weixin">
+          <img src="../assets/2.png" />
+        </div>
+      </li>
+      <li class="qq-list">
+        <i class="iconfont icon-qq" />
+        <div class="qq">
+          <img class="qq" src="../assets/2.png" />
+        </div>
+      </li>
+      <li class="github-list">
+        <a href="https://github.com/Maogee" target="_blank">
+          <i class="iconfont icon-github" />
+        </a>
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -39,7 +37,7 @@ export default {
     return {
       navIndex: "Home",
       nav: [
-        { title: "首页", en: "Home", path: "/Home" },
+        { title: "博客首页", en: "Home", path: "/Home" },
         { title: "个人简介", en: "Introduce", path: "/Introduce" },
         { title: "个人博客", en: "Blog", path: "/Blog" }
       ]
@@ -63,7 +61,10 @@ export default {
 <style scoped>
 .appheader {
   background-color: #f3f3f3;
-  text-align: center;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
 }
 .me {
   display: none;
@@ -95,13 +96,12 @@ li {
   outline: none;
 }
 .ul-item {
-  overflow: auto;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-content: center;
   margin: 0;
   padding: 0;
-}
-.linkaddress {
-  margin-top: 1rem;
-  height: 10rem;
 }
 a {
   text-decoration: none;
@@ -111,12 +111,16 @@ a {
   font-size: 30px;
 }
 .list-ui {
-  height: 100%;
-  margin-left: 2.5rem;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-content: center;
 }
-.list-ui li {
-  float: left;
+.qq-list{
   margin-left: 2rem;
+}
+.github-list{
+  margin-left:2rem;
 }
 .weixin {
   position: absolute;

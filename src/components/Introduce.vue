@@ -209,7 +209,11 @@ export default {
 
 <style scoped>
 #introduce{
-  height:100%;
+  height: 100%;
+  width:100%;
+  display: flex;
+  flex-flow: column nowrap;
+  align-content: center;
 }
 h3{
   font-size: 20;
@@ -217,14 +221,14 @@ h3{
   font-weight: bolder;
 }
 .container{
-  width: 50rem;
+  width: 100%;
 }
 .aboutme{
-  height: 40%;
+  height: 30%;
+  width:100%;
 }
 ul li{
   list-style: none;
-  margin-left: 50%;
   margin-top:1rem;
 }
 ul{
@@ -233,6 +237,11 @@ ul{
   padding: 0;
 }
 .myskill{
-  height: 60%;
+  height: 50%;
+  width:100%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-content: center;
 }
 </style>
