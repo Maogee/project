@@ -1,5 +1,5 @@
 <template>
-  <div id="blog">
+  <div class="blog">
     <div class="left-content">
       <div class="search">
         <input type="text" v-model="search" class="search-input" placeholder="Search" />
@@ -10,7 +10,7 @@
       <div class="preview">
         <div class="each-preview" v-for="(blog,index) in totalPage[currentPage]" :key="index">
           <h2>
-            <router-link class="blog-title" v-bind:to="'/read/'+blog.P_Id">{{blog.title}}</router-link>
+            <router-link class="blog-title" v-bind:to="'/read/'+blog.title">{{blog.title}}</router-link>
           </h2>
           <article>&nbsp&nbsp{{blog.body | snippet}}</article>
         </div>
@@ -117,14 +117,17 @@ export default {
 </script>
 
 <style>
-#blog {
+.blog {
+  height: 100%;
+  width: 100%;
   display: flex;
   flex-flow: row nowrap;
-  justify-content: center;
-  align-content: center;
+  justify-content: flex-start;
 }
 .left-content {
-  width: 68%;
+  height: 100%;
+  width: 65%;
+  margin-left: 1rem;
   background-color: #f3f3f3;
   display: flex;
   flex-flow: column nowrap;
@@ -139,7 +142,7 @@ export default {
   border-radius: 4px;
 }
 .search-input {
-  font-size: 14px;
+  font-size: 1rem;
   color: #999;
   display: block;
   float: left;
@@ -223,15 +226,13 @@ export default {
 }
 .right-content {
   height: 100%;
-  width: 28%;
-  background-color: #f3f3f3;
+  width: 30%;
   margin-left: 1rem;
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: center;
-  align-content: center;
+  background-color: #f3f3f3;
 }
-.right-content h1 {
+.right-content h1{
   margin-top: 2rem;
+  margin: 0;
+  padding: 0;
 }
 </style>

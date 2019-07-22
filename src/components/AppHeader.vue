@@ -62,15 +62,14 @@ export default {
 .appheader {
   background-color: #f3f3f3;
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
 }
 .me {
-  display: none;
-  height: 14rem;
-  width: 14rem;
-  margin-top: 5rem;
+  height: 13rem;
+  width: 13rem;
+  cursor: pointer;
   border-radius: 50%;
 }
 ul {
@@ -79,19 +78,21 @@ ul {
 }
 li {
   list-style: none;
-  margin-top: 2rem;
+  margin-top: 1rem;
 }
 .item-title {
   color: #1c2438;
-  font-size: 20px;
+  font-size: 1.5rem;
   background: none;
   border: 0;
+  cursor: pointer;
   outline: none;
 }
 .item-title-active {
   color: #2d8cf0;
-  font-size: 20px;
+  font-size: 1.5rem;
   border: 0;
+  cursor: pointer;
   background: none;
   outline: none;
 }
@@ -108,7 +109,7 @@ a {
   color: #333;
 }
 .iconfont {
-  font-size: 30px;
+  font-size: 2rem;
 }
 .list-ui {
   display: flex;

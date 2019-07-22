@@ -1,5 +1,5 @@
 <template>
-  <div id="home">
+  <div class="home">
     
   </div>
 </template>
@@ -17,7 +17,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-#home{
+.home{
   height:100%;
   width: 80%;
 }

@@ -1,13 +1,13 @@
 <template>
-  <div id="introduce">
+  <div class="introduce">
     <div class="container">
       <div class="aboutme">
         <h3>About Me</h3>
         <ul>
-          <li><i class="iconfont icon-caidan07"/>&nbsp<b>邝伟航</b></li>
-          <li><i class="iconfont icon-school"/>&nbsp<b>华南师范大学(数据库方向)</b></li>
-          <li><i class="iconfont icon-phone"/>&nbsp<b>15521420412</b></li>
-          <li><i class="iconfont icon-emailFilled"/>&nbsp<b>942847357@qq.com</b></li>
+          <li><i class="iconfont icon-caidan07"/>&nbsp&nbsp<b>***</b></li>
+          <li><i class="iconfont icon-school"/>&nbsp&nbsp<b>*************</b></li>
+          <li><i class="iconfont icon-phone"/>&nbsp&nbsp<b>***********</b></li>
+          <li><i class="iconfont icon-emailFilled"/>&nbsp&nbsp<b>942847357@qq.com</b></li>
         </ul>
       </div>
       <div class="myskill">
@@ -208,15 +208,12 @@ export default {
 </script>
 
 <style scoped>
-#introduce{
+.introduce{
   height: 100%;
   width:100%;
-  display: flex;
-  flex-flow: column nowrap;
-  align-content: center;
 }
 h3{
-  font-size: 20;
+  font-size: 1.5rem;
   color: #9474B4;
   font-weight: bolder;
 }
@@ -232,7 +229,7 @@ ul li{
   margin-top:1rem;
 }
 ul{
-  text-align: left;
+  text-align: center;
   margin: 0;
   padding: 0;
 }
