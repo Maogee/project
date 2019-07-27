@@ -34,6 +34,6 @@ export default new Router({
             path:'/read/:title',
             name:"Read",
             component:Read
-        }
+        },
     ]
 })

@@ -100,7 +100,7 @@ li {
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
-  align-content: center;
+  align-items: center;
   margin: 0;
   padding: 0;
 }
@@ -115,7 +115,7 @@ a {
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
-  align-content: center;
+  align-items: center;
 }
 .qq-list{
   margin-left: 2rem;

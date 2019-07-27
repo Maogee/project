@@ -97,14 +97,14 @@ export default {
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
-  align-content: center;
+  align-items: center;
 }
 .blog-head {
   width: 100%;
   height: 24%;
   display: flex;
   flex-flow: column nowrap;
-  align-content: center;
+  align-items: center;
 }
 .blog-head b {
   font-size: 3rem;
@@ -115,7 +115,7 @@ export default {
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
-  align-content: center;
+  align-items: center;
   margin: 0;
   padding: 0;
 }
@@ -170,7 +170,7 @@ export default {
   height: 60%;
   display: flex;
   flex-flow: column nowrap;
-  align-content: center;
+  align-items: center;
 }
 h2 {
   margin: 0;

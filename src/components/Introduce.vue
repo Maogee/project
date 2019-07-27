@@ -239,6 +239,5 @@ ul{
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
-  align-content: center;
 }
 </style>

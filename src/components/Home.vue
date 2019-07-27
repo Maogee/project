@@ -1,32 +1,205 @@
 <template>
-  <div class="home">
-    
+  <div id="home">
+    <div class="img-play">
+      <ul class="img-list" :style="[containStyle,finished?transitionStyle:notransitionStyle]">
+        <li>
+          <img :src="imgs[imgs.length-1].path" />
+        </li>
+        <li v-for="(item,index) in imgs" :key="index">
+          <img :src="item.path" />
+        </li>
+        <li>
+          <img :src="imgs[0].path" />
+        </li>
+      </ul>
+      <ul>
+        <li class="left" @click="move(70, 1)">
+          <svg
+            class="icon"
+            width="30px"
+            height="30.00px"
+            viewBox="0 0 1024 1024"
+            version="1.1"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill="#ffffff"
+              d="M481.233 904c8.189 0 16.379-3.124 22.628-9.372 12.496-12.497 12.496-32.759 0-45.256L166.488 512l337.373-337.373c12.496-12.497 12.496-32.758 0-45.255-12.498-12.497-32.758-12.497-45.256 0l-360 360c-12.496 12.497-12.496 32.758 0 45.255l360 360c6.249 6.249 14.439 9.373 22.628 9.373z"
+            />
+          </svg>
+        </li>
+        <li class="right" @click="move(70,-1)">
+          <svg
+            class="icon"
+            width="30px"
+            height="30.00px"
+            viewBox="0 0 1024 1024"
+            version="1.1"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill="#ffffff"
+              d="M557.179 904c-8.189 0-16.379-3.124-22.628-9.372-12.496-12.497-12.496-32.759 0-45.256L871.924 512 534.551 174.627c-12.496-12.497-12.496-32.758 0-45.255 12.498-12.497 32.758-12.497 45.256 0l360 360c12.496 12.497 12.496 32.758 0 45.255l-360 360c-6.249 6.249-14.439 9.373-22.628 9.373z"
+            />
+          </svg>
+        </li>
+      </ul>
+      <ul class="dots">
+        <li
+          v-for="(dot, i) in imgs"
+          :key="i"
+          :class="{dotted: i === (currentIndex-1)}"
+          @click="jump(i+1)"
+        ></li>
+      </ul>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   name: "Home",
+  props: {
+    initialSpeed: {
+      type: Number,
+      default: 30
+    },
+    initialInterval: {
+      type: Number,
+      default: 3
+    }
+  },
   data() {
     return {
-      msg: "Home"
+      imgs: [
+        {
+          path: require("../assets/3.jpg")
+        },
+        {
+          path: require("../assets/4.jpg")
+        },
+        {
+          path: require("../assets/5.jpg")
+        }
+      ],
+      currentIndex: 1,
+      transformEnd: true,
+      finished: true,
+      distance: -70,
+      transitionStyle:{transition:'all 1s'},
+      notransitionStyle:{},
     };
   },
+  computed: {
+    containStyle() {
+      return {
+        transform: `translate3d(${this.distance}rem, 0, 0)`
+      };
+    }
+  },
+  mounted() {
+    this.play();
+  },
+  methods: {
+    play() {
+      if (this.timer) {
+      }
+    },
+    move(offset, direction) {
+      if (!this.transformEnd) return;
+      this.finished=true;
+      this.transformEnd = false;
+      this.distance = this.distance + offset * direction;
+      this.currentIndex = this.currentIndex - direction;
+      if (this.currentIndex < 1) this.currentIndex = 3;
+      if (this.currentIndex > 3) this.currentIndex = 1;
+      if (this.distance < -210) {
+        window.setTimeout(() => {
+          this.distance = -70;
+          this.transformEnd = true;
+          this.finished=false;
+        }, 1000);
+      } else if (this.distance > -70) {
+        window.setTimeout(() => {
+          this.distance = -210;
+          this.transformEnd = true;
+          this.finished=false;
+        }, 1000);
+      } else {
+        window.setTimeout(() => {
+          this.transformEnd = true;
+        }, 1000);
+      }
+    }
+  }
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.home{
-  height:100%;
-  width: 80%;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
-ul{
-  margin-top: 15rem;
-}
-li{
+ul {
   list-style: none;
-  margin-left: 50%;
-  margin-top: 2rem;
+}
+img {
+  width: 70rem;
+  user-select: none;
+}
+.img-play {
+  position: relative;
+  height: 100%;
+  width: 90%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+.img-list {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  position: absolute;
+}
+.left,
+.right {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+  cursor: pointer;
+}
+.left {
+  left: 3%;
+  padding-left: 12px;
+  padding-top: 10px;
+}
+.right {
+  right: 3%;
+  padding-left: 6px;
+  padding-top: 10px;
+}
+.dots {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.dots li {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  margin: 0 3px;
+  border: 1px solid white;
+  border-radius: 50%;
+  background-color: #333;
+  cursor: pointer;
+}
+.dots .dotted {
+  background-color: orange;
 }
 </style>

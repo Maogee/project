@@ -165,11 +165,10 @@ export default {
 .preview {
   margin-top: 1rem;
   width:100%;
-  margin-left: 1rem;
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
-  align-content: center;
+  align-items: center;
 }
 .each-preview {
   background-color: white;
