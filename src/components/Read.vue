@@ -88,7 +88,6 @@ export default {
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
-  align-content: center;
 }
 .blog-left {
   width: 75%;
@@ -97,14 +96,12 @@ export default {
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
-  align-items: center;
 }
 .blog-head {
   width: 100%;
   height: 24%;
   display: flex;
   flex-flow: column nowrap;
-  align-items: center;
 }
 .blog-head b {
   font-size: 3rem;
@@ -115,7 +112,6 @@ export default {
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
-  align-items: center;
   margin: 0;
   padding: 0;
 }
@@ -161,16 +157,10 @@ export default {
   height: 100%;
   width: 25%;
   background-color: #f3f3f3;
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
 }
 .view {
   width: 100%;
   height: 60%;
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: center;
 }
 h2 {
   margin: 0;
@@ -189,13 +179,16 @@ h2 {
 .write {
   width: 100%;
   height: 40%;
-  display: flex;
-  flex-flow: column nowrap;
 }
 .newcomment {
   height: 70%;
   width: 90%;
   margin-left: 1rem;
+  border: 1px white solid;
+  border-radius: 2%;
+  word-wrap: break-word;
+  table-layout: fixed;
+  word-break: break-all;
 }
 .commit-comment {
   border: 0;

@@ -96,7 +96,6 @@ export default {
       this.temp = this.blogs.filter(blog => {
         return blog.title.match(this.search);
       });
-      console.log(this.temp);
       this.pageNum = Math.ceil(this.temp.length / this.pageSize) || 1;
       for (let i = 0; i < this.pageNum; i++) {
         this.totalPage.push(

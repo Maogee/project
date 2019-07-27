@@ -49,7 +49,6 @@
           v-for="(dot, i) in imgs"
           :key="i"
           :class="{dotted: i === (currentIndex-1)}"
-          @click="jump(i+1)"
         ></li>
       </ul>
     </div>
@@ -86,14 +85,19 @@ export default {
       transformEnd: true,
       finished: true,
       distance: -70,
-      transitionStyle:{transition:'all 1s'},
-      notransitionStyle:{},
+      notransitionStyle: {},
+      time: 1
     };
   },
   computed: {
     containStyle() {
       return {
         transform: `translate3d(${this.distance}rem, 0, 0)`
+      };
+    },
+    transitionStyle() {
+      return {
+        transition: `all ${this.time}s`
       };
     }
   },
@@ -107,30 +111,32 @@ export default {
     },
     move(offset, direction) {
       if (!this.transformEnd) return;
-      this.finished=true;
+      this.finished = true;
       this.transformEnd = false;
       this.distance = this.distance + offset * direction;
-      this.currentIndex = this.currentIndex - direction;
+      direction === -1
+        ? (this.currentIndex += offset / 70)
+        : (this.currentIndex -= offset / 70);
       if (this.currentIndex < 1) this.currentIndex = 3;
       if (this.currentIndex > 3) this.currentIndex = 1;
       if (this.distance < -210) {
         window.setTimeout(() => {
           this.distance = -70;
           this.transformEnd = true;
-          this.finished=false;
+          this.finished = false;
         }, 1000);
       } else if (this.distance > -70) {
         window.setTimeout(() => {
           this.distance = -210;
           this.transformEnd = true;
-          this.finished=false;
+          this.finished = false;
         }, 1000);
       } else {
         window.setTimeout(() => {
           this.transformEnd = true;
         }, 1000);
       }
-    }
+    },
   }
 };
 </script>
