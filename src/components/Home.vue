@@ -45,11 +45,7 @@
         </li>
       </ul>
       <ul class="dots">
-        <li
-          v-for="(dot, i) in imgs"
-          :key="i"
-          :class="{dotted: i === (currentIndex-1)}"
-        ></li>
+        <li v-for="(dot, i) in imgs" :key="i" :class="{dotted: i === (currentIndex-1)}"></li>
       </ul>
     </div>
   </div>
@@ -107,7 +103,12 @@ export default {
   methods: {
     play() {
       if (this.timer) {
+        window.clearInterval(this.timer);
+        this.timer = null;
       }
+      this.timer = window.setInterval(() => {
+        this.move(70, -1);
+      }, 4000);
     },
     move(offset, direction) {
       if (!this.transformEnd) return;
@@ -136,7 +137,7 @@ export default {
           this.transformEnd = true;
         }, 1000);
       }
-    },
+    }
   }
 };
 </script>
