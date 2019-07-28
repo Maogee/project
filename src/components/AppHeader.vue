@@ -2,7 +2,7 @@
   <div class="appheader">
     <img class="me" @click="routerLink('1','/Introduce')" src="../assets/1.jpg" />
     <ul class="ul-item">
-      <li v-for="(item,index) in nav" @click="routerLink(index,item.path)" :key="index">
+      <li class="title-li" v-for="(item,index) in nav" @click="routerLink(index,item.path)" :key="index">
         <button :class="navIndex===item.en?'item-title-active':'item-title'">
           <b>{{item.title}}</b>
         </button>
@@ -84,6 +84,7 @@ li {
   color: #1c2438;
   font-size: 1.5rem;
   background: none;
+  opacity: 0.5;
   border: 0;
   cursor: pointer;
   outline: none;
@@ -94,6 +95,25 @@ li {
   border: 0;
   cursor: pointer;
   background: none;
+  opacity: 0.5;
+  outline: none;
+}
+.title-li:hover .item-title{
+  color: #1c2438;
+  font-size: 1.5rem;
+  background: none;
+  opacity: 1;
+  border: 0;
+  cursor: pointer;
+  outline: none;
+}
+.title-li:hover .item-title-active{
+ color: #2d8cf0;
+  font-size: 1.5rem;
+  border: 0;
+  cursor: pointer;
+  background: none;
+  opacity: 1;
   outline: none;
 }
 .ul-item {
@@ -117,11 +137,11 @@ a {
   justify-content: center;
   align-items: center;
 }
-.qq-list{
+.qq-list {
   margin-left: 2rem;
 }
-.github-list{
-  margin-left:2rem;
+.github-list {
+  margin-left: 2rem;
 }
 .weixin {
   position: absolute;

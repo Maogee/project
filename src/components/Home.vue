@@ -3,13 +3,22 @@
     <div class="img-play">
       <ul class="img-list" :style="[containStyle,finished?transitionStyle:notransitionStyle]">
         <li>
-          <img :src="imgs[imgs.length-1].path" />
+          <router-link class="img-hover" :to="imgs[imgs.length-1].page">
+            <h1 class="img-title">{{imgs[imgs.length-1].name}}</h1>
+            <img :src="imgs[imgs.length-1].path" />
+          </router-link>
         </li>
         <li v-for="(item,index) in imgs" :key="index">
-          <img :src="item.path" />
+          <router-link class="img-hover" :to="item.page">
+            <h1 class="img-title">{{item.name}}</h1>
+            <img :src="item.path" />
+          </router-link>
         </li>
         <li>
-          <img :src="imgs[0].path" />
+          <router-link class="img-hover" :to="imgs[0].page">
+            <h1 class="img-title">{{imgs[0].name}}</h1>
+            <img :src="imgs[0].path" />
+          </router-link>
         </li>
       </ul>
       <ul>
@@ -68,13 +77,19 @@ export default {
     return {
       imgs: [
         {
-          path: require("../assets/3.jpg")
+          name: "首页",
+          path: require("../assets/3.jpg"),
+          page: "/Home"
         },
         {
-          path: require("../assets/4.jpg")
+          name: "个人介绍",
+          path: require("../assets/4.jpg"),
+          page: "/Introduce"
         },
         {
-          path: require("../assets/5.jpg")
+          name: "个人博客",
+          path: require("../assets/5.jpg"),
+          page: "/Blog"
         }
       ],
       currentIndex: 1,
@@ -144,6 +159,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+router-link {
+  list-style: none;
+}
 * {
   box-sizing: border-box;
   margin: 0;
@@ -168,6 +186,26 @@ img {
   width: 100%;
   display: flex;
   position: absolute;
+}
+.img-title {
+  font-size: 6rem;
+  opacity: 0.6;
+  color: white;
+  width: 100%;
+  text-align: center;
+  position: fixed;
+  z-index: 99999;
+  user-select: none;
+}
+.img-hover:hover .img-title{
+  font-size: 6rem;
+  opacity: 1;
+  color: white;
+  width: 100%;
+  text-align: center;
+  position: fixed;
+  z-index: 99999;
+  user-select: none;
 }
 .left,
 .right {
