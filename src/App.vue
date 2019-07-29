@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <app-header :style="{ height: screenHeight + 'px' ,width:(0.2*screenWidth)+'px'}" id="header"></app-header>
-    <router-view :style="{ height: screenHeight + 'px' ,width:(0.8*screenWidth)+'px'}" id="content"></router-view>
+    <router-view class="container" :style="{ height: screenHeight + 'px' ,width:(0.8*screenWidth)+'px'}" id="content"></router-view>
   </div>
 </template>
 
@@ -71,5 +71,9 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
+}
+.container{
+  background: url("./assets/0.jpg") 0 0 no-repeat;
+  background-size: 100% 100%;
 }
 </style>

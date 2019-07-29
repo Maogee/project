@@ -12,7 +12,27 @@
           <h2>
             <router-link class="blog-title" v-bind:to="'/read/'+blog.title">{{blog.title}}</router-link>
           </h2>
-          <article>&nbsp&nbsp{{blog.body | snippet}}</article>
+          <div class="inf">
+            <span class="inf-tag">
+              <i class="iconfont icon-tag" />
+              {{blog.tag}}
+            </span>
+            <span class="inf-time">
+              <i class="iconfont icon-time" />
+              {{blog.time}}
+            </span>
+          </div>
+          <article class="pre-article">&nbsp&nbsp{{blog.body | snippet}}</article>
+          <div class="other-user">
+            <span class="inf-comment">
+              <i class="iconfont icon-custom-comment" />
+              {{blog.commentNum}}
+            </span>
+            <span class="inf-like">
+              <i class="iconfont icon-xin" style="color:red" />
+              {{blog.like}}
+            </span>
+          </div>
         </div>
       </div>
       <div class="switch-page">
@@ -36,8 +56,33 @@
       </div>
     </div>
     <div class="right-content">
-      <h1 align="center">热门文章</h1>
-      <div></div>
+      <h1 class="class-title" align="center">推荐</h1>
+      <div class="most-view">
+        <ul>
+          <li class="view-title" v-for="(item,index) in hotBlog" :key="index">
+            <router-link class="view-link" v-bind:to="'/read/'+item.title">
+              <span>{{index+1}}. {{item.title}}</span>
+            </router-link>
+          </li>
+        </ul>
+      </div>
+      <h1 class="class" align="center">标签</h1>
+      <div class="class-view">
+        <ul>
+          <li
+            class="class-tag"
+            :style="{backgroundColor:colors[index]}"
+            v-for="(item,index) in tags"
+            :key="index"
+          >
+            <span>{{item.tag}}</span>
+          </li>
+        </ul>
+      </div>
+      <h1 class="class" align="center">关于本站</h1>
+      <div class="about">
+        <span class="about-text">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp本站是一个用于知识积累与分享的个人开源博客。主要技术栈为HTML+CSS+JS、vue全家桶。</span>
+      </div>
     </div>
   </div>
 </template>
@@ -50,35 +95,67 @@ export default {
       blogs: [
         {
           title: "WDNMD",
-          body: "WGNMD"
+          body: "WGNMD",
+          time: new Date(),
+          tag: "js",
+          commentNum: 10,
+          like: 20
         },
         {
           title: "WDNMD",
-          body: "WGNMD"
+          body: "WGNMD",
+          time: new Date(),
+          tag: "js",
+          commentNum: 10,
+          like: 20
         },
         {
           title: "WDNMD",
-          body: "WGNMD"
+          body: "WGNMD",
+          time: new Date(),
+          tag: "js",
+          commentNum: 10,
+          like: 20
         },
         {
           title: "WDNMD",
-          body: "WGNMD"
+          body: "WGNMD",
+          time: new Date(),
+          tag: "js",
+          commentNum: 10,
+          like: 20
         },
         {
           title: "WDNMD",
-          body: "WGNMD"
+          body: "WGNMD",
+          time: new Date(),
+          tag: "js",
+          commentNum: 10,
+          like: 20
         },
         {
           title: "WDNMD",
-          body: "WGNMD"
+          body: "WGNMD",
+          time: new Date(),
+          tag: "js",
+          commentNum: 10,
+          like: 20
         },
         {
           title: "HHHHH",
-          body: "WGNMD"
+          body: "WGNMD",
+          time: new Date(),
+          tag: "js",
+          commentNum: 10,
+          like: 20
         },
         {
           title: "HHHHH",
-          body: "WGNMD"
+          body: "WGNMD",
+          time: new Date(),
+          tag: "js",
+          commentNum: 10,
+          like: 20
         }
       ],
       totalPage: [],
@@ -86,7 +163,84 @@ export default {
       pageSize: 4,
       pageNum: Number,
       currentPage: 0,
-      temp: []
+      temp: [],
+      hotBlog: [
+        {
+          title: "WDNMD",
+          body: "WGNMD",
+          time: new Date(),
+          tag: "js",
+          commentNum: 10,
+          like: 20
+        },
+        {
+          title: "WDNMD",
+          body: "WGNMD",
+          time: new Date(),
+          tag: "js",
+          commentNum: 10,
+          like: 20
+        },
+        {
+          title: "WDNMD",
+          body: "WGNMD",
+          time: new Date(),
+          tag: "js",
+          commentNum: 10,
+          like: 20
+        },
+        {
+          title: "WDNMD",
+          body: "WGNMD",
+          time: new Date(),
+          tag: "js",
+          commentNum: 10,
+          like: 20
+        },
+        {
+          title: "WDNMD",
+          body: "WGNMD",
+          time: new Date(),
+          tag: "js",
+          commentNum: 10,
+          like: 20
+        }
+      ],
+      tags: [
+        {
+          tag: "html"
+        },
+        {
+          tag: "js"
+        },
+        {
+          tag: "css"
+        },
+        {
+          tag: "vue"
+        },
+        {
+          tag: "node.js"
+        },
+        {
+          tag: "es6"
+        },
+        {
+          tag: "bootstrap"
+        }
+      ],
+      colors: [
+        "#FF9933",
+        "#663300",
+        "#CC6600",
+        "#99CC33",
+        "#CC6699",
+        "#009966",
+        "#999999",
+        "#336666",
+        "#9BBFEA",
+        "#CCCC00"
+      ]
     };
   },
   methods: {
@@ -115,7 +269,11 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+* {
+  margin: 0;
+  padding: 0;
+}
 .blog {
   height: 100%;
   width: 100%;
@@ -127,14 +285,13 @@ export default {
   height: 100%;
   width: 65%;
   margin-left: 1rem;
-  background-color: #f3f3f3;
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
-  align-items:center;
+  align-items: center;
 }
 .search {
-  margin-top: 2rem;
+  margin-top: 1rem;
   width: 20rem;
   height: 2rem;
   border: 1px solid #ccc;
@@ -163,7 +320,7 @@ export default {
 }
 .preview {
   margin-top: 1rem;
-  width:100%;
+  width: 100%;
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
@@ -182,8 +339,41 @@ export default {
   margin-top: 0.5rem;
   width: auto;
 }
+.pre-article {
+  margin-top: 0.5rem;
+}
+.inf {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.inf-tag {
+  margin-left: 2rem;
+  opacity: 0.3;
+  font-size: 0.8rem;
+}
+.inf-time {
+  margin-left: 2rem;
+  opacity: 0.3;
+  font-size: 0.8rem;
+}
 .blog-title {
   text-decoration: none;
+  color: aquamarine;
+}
+.other-user {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 1rem;
+}
+.inf-like {
+  font-size: 0.8;
+  margin-right: 1rem;
+}
+.inf-comment {
+  margin-right: 1rem;
+  font-size: 0.8;
 }
 .router-link-active {
   text-decoration: none;
@@ -226,11 +416,56 @@ export default {
   height: 100%;
   width: 30%;
   margin-left: 1rem;
-  background-color: #f3f3f3;
 }
-.right-content h1{
+.class-title {
   margin-top: 2rem;
-  margin: 0;
-  padding: 0;
+  color: cornflowerblue;
+  background-color: #2e3033;
+  line-height: 3rem;
+}
+.most-view {
+  background-color: rgb(255, 255, 255, 0.7);
+  height: 18rem;
+  width: 100%;
+}
+.view-title {
+  list-style: none;
+  margin-left: 1rem;
+  padding: 1rem;
+  white-space: nowrap;
+  border-bottom: 1px solid #ddd;
+}
+.view-link {
+  text-decoration: none;
+  color: cornflowerblue;
+}
+.class {
+  color: cornflowerblue;
+  background-color: #2e3033;
+  line-height: 3rem;
+}
+.class-view {
+  background-color: rgb(255, 255, 255, 0.7);
+  height: 8rem;
+  width: 100%;
+}
+.class-tag {
+  margin-top: 0.5rem;
+  margin-left: 1rem;
+  list-style: none;
+  text-align: center;
+  line-height: 2rem;
+  width: 6rem;
+  border: -2px solid;
+  border-radius: 5%;
+  display: inline-block;
+  opacity: 0.7;
+  color: aquamarine;
+}
+.about {
+  background-color: rgb(255, 255, 255, 0.7);
+  height: 5rem;
+  width: 100%;
+  line-height: 1.5rem;
 }
 </style>

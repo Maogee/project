@@ -22,7 +22,7 @@
         </li>
       </ul>
       <ul>
-        <li class="left" @click="move(70, 1)">
+        <li class="left" @click="move(80, 1)">
           <svg
             class="icon"
             width="30px"
@@ -37,7 +37,7 @@
             />
           </svg>
         </li>
-        <li class="right" @click="move(70,-1)">
+        <li class="right" @click="move(80,-1)">
           <svg
             class="icon"
             width="30px"
@@ -95,7 +95,7 @@ export default {
       currentIndex: 1,
       transformEnd: true,
       finished: true,
-      distance: -70,
+      distance: -80,
       notransitionStyle: {},
       time: 1
     };
@@ -122,7 +122,7 @@ export default {
         this.timer = null;
       }
       this.timer = window.setInterval(() => {
-        this.move(70, -1);
+        this.move(80, -1);
       }, 4000);
     },
     move(offset, direction) {
@@ -131,19 +131,19 @@ export default {
       this.transformEnd = false;
       this.distance = this.distance + offset * direction;
       direction === -1
-        ? (this.currentIndex += offset / 70)
-        : (this.currentIndex -= offset / 70);
+        ? (this.currentIndex += offset / 80)
+        : (this.currentIndex -= offset / 80);
       if (this.currentIndex < 1) this.currentIndex = 3;
       if (this.currentIndex > 3) this.currentIndex = 1;
-      if (this.distance < -210) {
+      if (this.distance < -240) {
         window.setTimeout(() => {
-          this.distance = -70;
+          this.distance = -80;
           this.transformEnd = true;
           this.finished = false;
         }, 1000);
-      } else if (this.distance > -70) {
+      } else if (this.distance > -80) {
         window.setTimeout(() => {
-          this.distance = -210;
+          this.distance = -240;
           this.transformEnd = true;
           this.finished = false;
         }, 1000);
@@ -171,13 +171,13 @@ ul {
   list-style: none;
 }
 img {
-  width: 70rem;
+  width: 80rem;
   user-select: none;
 }
 .img-play {
   position: relative;
   height: 100%;
-  width: 90%;
+  width: 100%;
   margin: 0 auto;
   overflow: hidden;
 }
